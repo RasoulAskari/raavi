@@ -13,7 +13,38 @@ return new class extends Migration
     {
         Schema::create('attachments', function (Blueprint $table) {
             $table->id();
+            $table->increments("id")->index("attachment_id_index", "hash");
+            $table->string("url")->index("attachment_url_index", "btree")->notNullable();
+            $table->integer("height")->index("attachment_height_index", "hash")->nullable();
+            $table->integer("width")->index("attachment_width_index", "hash")->nullable();
+            $table->string("duration")->nullable();
+            $table->string("mime_type")->index("attachment_mime_type_index", "hash");
+            $table->integer("size")->nullable();
+            $table->timestamps(true, true, false);
+            $table->enum("uploaded_by_type", ["admin", "user"]);
+            $table->uuid("uploaded_by")->index("attachment_uploaded_by_index", "hash");
+
             $table->timestamps();
+        });
+        Schema::create('attachmentParentSchema', function (Blueprint $table) {
+            $table
+                ->integer("parent_id")
+                ->unsigned()
+                ->index("attachment_parent_id_index", "hash")
+                ->nullable();
+            $table
+                ->foreign("parent_id")
+                ->references("attachments.id")
+                ->deferrable("deferred");
+            $table
+                ->integer("thumbnail_id")
+                ->unsigned()
+                ->index("attachment_thumbnail_id_index", "hash")
+                ->nullable();
+            $table
+                ->foreign("thumbnail_id")
+                ->references("attachments.id")
+                ->deferrable("deferred");
         });
     }
 
