@@ -16,21 +16,19 @@ return new class extends Migration
             $table->string('full_name');
             $table->string('user_name');
             $table->string('phone_no');
-            $table->text('bio');
-            $table->timestamp('birth_date');
+            $table->text('bio')->nullable();
+            $table->timestamp('birth_date')->nullable();
             $table->enum('gender', ['male', 'female']);
             $table->enum('status', ['active', 'suspended'])->default('active');
             $table->enum('profile_type', ['public', 'private'])->default('public');
-            $table->integer('profile_picture');
-            $table->integer('cover_photo');
-            $table->timestamp('phone_verified_at');
-            $table->timestamp('suspended_until');
-            $table->integer('suspended_id');
-            $table->decimal('latitude');
-            $table->decimal('longitude');
-            $table->integer('state_id');
-
-
+            $table->integer('profile_picture')->nullable();
+            $table->integer('cover_photo')->nullable();
+            $table->timestamp('phone_verified_at')->nullable();
+            $table->timestamp('suspended_until')->nullable();
+            $table->integer('suspended_id')->nullable();
+            $table->decimal('latitude', 14, 8);
+            $table->decimal('longitude', 14, 8);
+            $table->integer('state_id')->nullable();
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
