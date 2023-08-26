@@ -17,19 +17,18 @@ return new class extends Migration
             $table->string('user_name');
             $table->string('phone_no');
             $table->text('bio');
-            $table->string('birth_date');
-            $table->string('gender');
-            $table->string('status');
-            $table->string('profile_type');
-            $table->string('profile_picture');
-            $table->string('cover_photo');
-            $table->string('phone_verified_at');
-            $table->string('suspended_until');
-            $table->string('suspended_id');
-            $table->string('latitude');
-            $table->string('longitude');
-            $table->string('state_id');
-            $table->string('longitude');
+            $table->timestamp('birth_date');
+            $table->enum('gender', ['male', 'female']);
+            $table->enum('status', ['active', 'suspended'])->default('active');
+            $table->enum('profile_type', ['public', 'private'])->default('public');
+            $table->integer('profile_picture');
+            $table->integer('cover_photo');
+            $table->timestamp('phone_verified_at');
+            $table->timestamp('suspended_until');
+            $table->integer('suspended_id');
+            $table->decimal('latitude');
+            $table->decimal('longitude');
+            $table->integer('state_id');
 
 
             $table->string('email')->unique();
