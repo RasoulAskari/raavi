@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return ['user' => "do you know you are?"];
 });
+
+Route::post('login', [AuthController::class, 'login']);
+
+Route::group(
+    ['middleware' => 'auth:sanctum'],
+    function () {
+    }
+);
