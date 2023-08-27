@@ -13,6 +13,19 @@ return new class extends Migration
     {
         Schema::create('reasons', function (Blueprint $table) {
             $table->id();
+            $table->integer("reasonable_id");
+            $table->string("reasonable_type");
+            $table->string("prev_state");
+            $table->string("new_state");
+            $table->text("reason");
+            $table
+                ->uuid("changed_by")
+                ->unsigned()
+                ->references("users.id")
+                ->deferrable("deferred")
+                ->nullable()
+                ->onDelete("SET NULL");
+
             $table->timestamps();
         });
     }
