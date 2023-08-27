@@ -37,7 +37,7 @@ return new class extends Migration
             $table->timestamps();
         });
         Schema::create(
-            'countries_states_cities',
+            'stateSchema',
             function (Blueprint $table) {
                 $table->id();
 
@@ -54,7 +54,7 @@ return new class extends Migration
             }
         );
         Schema::create(
-            'countries_states_cities',
+            'citiesSchema',
             function (Blueprint $table) {
                 $table->id();
 
@@ -66,7 +66,7 @@ return new class extends Migration
             }
         );
         Schema::create(
-            'countries_states_cities',
+            'languagesSchema',
             function (Blueprint $table) {
                 $table->id();
 
