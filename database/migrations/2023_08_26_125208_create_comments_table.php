@@ -37,18 +37,18 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('commentReplySchema', function (Blueprint $table) {
+        Schema::create('comment_reply_schema', function (Blueprint $table) {
             $table->integer("comment_id")->unsigned()->nullable();
             $table->foreign("comment_id")->references("comments.id")->deferrable("deferred");
         });
-        Schema::create('commentReactionSchema', function (Blueprint $table) {
+        Schema::create('comment_reaction_schema', function (Blueprint $table) {
             $table->increments("id");
             $table->integer("comment_id")->unsigned()->nullable();
             $table->foreign("comment_id")->references("comments.id")->deferrable("deferred");
 
             $table->uuid("user_id")->references("users.id")->deferrable("deferred");
         });
-        Schema::create('commentMentionSchema', function (Blueprint $table) {
+        Schema::create('comment_mention_schema', function (Blueprint $table) {
             $table->increments("id");
             $table->integer("comment_id")->unsigned()->nullable();
             $table->foreign("comment_id")->references("comments.id")->deferrable("deferred");

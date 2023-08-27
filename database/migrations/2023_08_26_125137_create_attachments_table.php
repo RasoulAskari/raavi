@@ -26,7 +26,7 @@ return new class extends Migration
 
             $table->timestamps();
         });
-        Schema::create('attachmentParentSchema', function (Blueprint $table) {
+        Schema::create('attachment_parent_schema', function (Blueprint $table) {
             $table
                 ->integer("parent_id")
                 ->unsigned()

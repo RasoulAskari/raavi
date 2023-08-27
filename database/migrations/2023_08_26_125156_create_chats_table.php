@@ -22,7 +22,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('userChatSchema', function (Blueprint $table) {
+        Schema::create('user_chat_schema', function (Blueprint $table) {
             $table->id();
             $table
                 ->integer("chat_id")
