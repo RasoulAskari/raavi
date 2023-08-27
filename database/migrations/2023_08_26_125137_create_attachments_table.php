@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string("duration")->nullable();
             $table->string("mime_type")->index("attachment_mime_type_index", "hash");
             $table->integer("size")->nullable();
-            $table->timestamps(true, true, false);
             $table->enum("uploaded_by_type", ["admin", "user"]);
             $table->uuid("uploaded_by")->index("attachment_uploaded_by_index", "hash");
 

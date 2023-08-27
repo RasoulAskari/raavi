@@ -54,8 +54,6 @@ return new class extends Migration
                 ->references("administrators->id")
                 ->deferrable("deferred")
                 ->index("user_verified_by_index", "hash");
-            $table->timestamps(true, true);
-            $table->timestamp("deleted_at");
             $table->timestamp("last_online");
             $table->timestamps();
         });
@@ -83,7 +81,6 @@ return new class extends Migration
                     ->deferrable("deferred")
                     ->index("user_search_history_user_id_index", "hash");
                 $table->string("search_text")->index("user_search_text_index", "btree");
-                $table->timestamps(true, true);
             }
         );
         Schema::create(
@@ -96,7 +93,6 @@ return new class extends Migration
                     ->deferrable("deferred")
                     ->index("user_fcm_token_user_id_index", "hash");
                 $table->text("fcm_token")->nullable();
-                $table->timestamps(true, true);
             }
         );
         Schema::create(
@@ -113,7 +109,6 @@ return new class extends Migration
                     ->references("users.id")
                     ->deferrable("deferred")
                     ->index("user_block_blocked_id_index", "hash");
-                $table->timestamps(true, true);
             }
         );
         Schema::create(
@@ -129,7 +124,6 @@ return new class extends Migration
                     ->enum("privacy_type", ["follow_list", "profile_privacy"])
                     ->index("user_privacy_type_index", "hash");
                 $table->string("privacy_value")->index("user_privacy_value_index", "hash");
-                $table->timestamps(true, true);
             }
         );
         Schema::create(
@@ -146,7 +140,6 @@ return new class extends Migration
                     ->references("users.id")
                     ->deferrable("deferred")
                     ->index("following_follower_index", "hash");
-                $table->timestamps(true, true);
             }
         );
         Schema::create(
@@ -163,7 +156,6 @@ return new class extends Migration
                     ->references("administrators->id")
                     ->deferrable("deferred")
                     ->index("suggest_created_by_index", "hash");
-                $table->timestamps(true, true);
             }
         );
         Schema::create(
@@ -180,7 +172,6 @@ return new class extends Migration
                     ->references("users.id")
                     ->deferrable("deferred")
                     ->index("follow_request_sender_index", "hash");
-                $table->timestamps(true, true);
             }
         );
         Schema::create(
@@ -199,7 +190,6 @@ return new class extends Migration
                     ->index("message_request_sender_id_index", "hash");
                 $table->integer("chat_id")->references("chats->id")->deferrable("deferred");
 
-                $table->timestamps(true, true);
             }
         );
         Schema::create(
@@ -221,7 +211,6 @@ return new class extends Migration
                 $table->id();
                 $table->string("phone")->index("login_code_phone_index", "hash");
                 $table->string("code")->index("login_code_code_index", "hash");
-                $table->timestamps(true, true);
             }
         );
     }

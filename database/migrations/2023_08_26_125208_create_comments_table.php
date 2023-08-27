@@ -31,8 +31,6 @@ return new class extends Migration
                 ->nullable()
                 ->onDelete("SET NULL");
             $table->text("content")->index("comment_content_index", "btree");
-            $table->timestamp("deleted_at");
-            $table->timestamps(true, true);
 
             $table->timestamps();
         });
@@ -55,7 +53,7 @@ return new class extends Migration
 
             $table->uuid("user_id")->references("users.id")->deferrable("deferred");
             $table->text("content")->nullable();
-            $table->timestamps(true, true);
+            $table->timestamps();
         });
     }
 

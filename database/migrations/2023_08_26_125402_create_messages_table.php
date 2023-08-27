@@ -37,7 +37,6 @@ return new class extends Migration
             $table->json("recipients")->nullable();
 
             $table->boolean("seen")->default(false);
-            $table->timestamp("deleted_at");
 
             $table->timestamps();
         });

@@ -24,7 +24,6 @@ return new class extends Migration
                 ->deferrable("deferred")
                 ->index("notifications_user_id_index", "hash");
 
-            $table->timestamps(true, true);
 
             $table->timestamps();
         });

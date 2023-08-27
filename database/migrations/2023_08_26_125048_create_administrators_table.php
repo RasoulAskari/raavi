@@ -20,8 +20,6 @@ return new class extends Migration
             $table->timestamp("birth_date")->nullable();
             $table->enum("gender", ["male", "female"]);
             $table->integer("profile_picture")->unsigned()->nullable();
-            $table->timestamps(true, true);
-            $table->timestamp("deleted_at");
             $table->timestamps();
         });
     }

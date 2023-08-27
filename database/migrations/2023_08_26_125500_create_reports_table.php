@@ -27,8 +27,6 @@ return new class extends Migration
                 ->nullable()
                 ->onDelete("SET NULL")
                 ->index("report_reported_by_index", "hash");
-            $table->timestamp("deleted_at");
-            $table->timestamps(true, true);
 
             $table->timestamps();
         });

@@ -38,8 +38,6 @@ return new class extends Migration
 
             $table->string("expire_job_id");
 
-            $table->timestamps(true, false);
-            $table->timestamp("deleted_at");
 
             $table->timestamps();
         });

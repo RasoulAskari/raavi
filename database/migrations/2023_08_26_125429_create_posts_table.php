@@ -30,8 +30,6 @@ return new class extends Migration
                 ->onDelete("SET NULL")
                 ->index()
                 ->index("post_created_by_index", "hash");
-            $table->timestamp("deleted_at");
-            $table->timestamps(true, true);
 
             $table->timestamps();
         });
