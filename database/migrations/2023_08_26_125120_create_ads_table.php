@@ -23,18 +23,16 @@ return new class extends Migration
                 ->nullable();
             $table
                 ->integer("post_id")
-                ->unsigned()
-                ->index("ads_post_id_index", "hash")
                 ->nullable();
             $table->foreign("post_id")->references("posts.id")->deferrable("deferred");
-            $table
-                ->uuid("created_by")
-                ->references("administrators.id")
-                ->deferrable("deferred")
-                ->unsigned()
-                ->nullable()
-                ->onDelete("SET NULL")
-                ->index("ads_created_by_index", "hash");
+            // $table
+            //     ->uuid("created_by")
+            //     ->references("administrators.id")
+            //     ->deferrable("deferred")
+            //     ->unsigned()
+            //     ->nullable()
+            //     ->onDelete("SET NULL")
+            //     ->index("ads_created_by_index", "hash");
 
             $table->string("expire_job_id");
 

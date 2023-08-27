@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('attachments', function (Blueprint $table) {
             $table->id();
-            $table->increments("id")->index("attachment_id_index", "hash");
             $table->string("url")->index("attachment_url_index", "btree")->notNullable();
             $table->integer("height")->index("attachment_height_index", "hash")->nullable();
             $table->integer("width")->index("attachment_width_index", "hash")->nullable();
