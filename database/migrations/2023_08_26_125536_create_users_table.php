@@ -59,7 +59,7 @@ return new class extends Migration
         });
 
         Schema::create(
-            'users',
+            'user_attachment_schemas',
             function (Blueprint $table) {
                 $table
                     ->foreign("profile_picture")
@@ -72,7 +72,7 @@ return new class extends Migration
             }
         );
         Schema::create(
-            'users',
+            'search_history_schemas',
             function (Blueprint $table) {
                 $table->id();
                 $table
@@ -84,7 +84,7 @@ return new class extends Migration
             }
         );
         Schema::create(
-            'users',
+            'user_fcm_token_schemas',
             function (Blueprint $table) {
                 $table->id();
                 $table
@@ -96,7 +96,7 @@ return new class extends Migration
             }
         );
         Schema::create(
-            'users',
+            'blocked_user_schemas',
             function (Blueprint $table) {
                 $table->id();
                 $table
@@ -112,7 +112,7 @@ return new class extends Migration
             }
         );
         Schema::create(
-            'users',
+            'user_privacy_setting_schemas',
             function (Blueprint $table) {
                 $table->id();
                 $table
@@ -127,7 +127,7 @@ return new class extends Migration
             }
         );
         Schema::create(
-            'users',
+            'following_schemas',
             function (Blueprint $table) {
                 $table->id();
                 $table
@@ -143,7 +143,7 @@ return new class extends Migration
             }
         );
         Schema::create(
-            'users',
+            'suggest_user_schemas',
             function (Blueprint $table) {
                 $table->id();
                 $table
@@ -159,7 +159,7 @@ return new class extends Migration
             }
         );
         Schema::create(
-            'users',
+            'follow_request_schemas',
             function (Blueprint $table) {
                 $table->id();
                 $table
@@ -175,7 +175,7 @@ return new class extends Migration
             }
         );
         Schema::create(
-            'users',
+            'message_request_schemas',
             function (Blueprint $table) {
                 $table->id();
                 $table
@@ -189,11 +189,10 @@ return new class extends Migration
                     ->deferrable("deferred")
                     ->index("message_request_sender_id_index", "hash");
                 $table->integer("chat_id")->references("chats->id")->deferrable("deferred");
-
             }
         );
         Schema::create(
-            'users',
+            'user_verify_attachments_schemas',
             function (Blueprint $table) {
                 $table->id();
                 $table->uuid("user_id")->nullable()->index("user_verify_user_id_index", "hash");
@@ -206,7 +205,7 @@ return new class extends Migration
             }
         );
         Schema::create(
-            'users',
+            'user_login_code_schemas',
             function (Blueprint $table) {
                 $table->id();
                 $table->string("phone")->index("login_code_phone_index", "hash");
