@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('user_chat_schemas', function (Blueprint $table) {
             $table->id();
             $table
-                ->integer("chat_id")->notNullable();
+                ->unsignedBigInteger("chat_id")->notNullable();
             $table->foreign("chat_id")->references("id")->on("chat_schemas")->deferrable("deferred");
             // $table
             //     ->uuid("user_id")

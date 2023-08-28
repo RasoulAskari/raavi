@@ -17,12 +17,12 @@ return new class extends Migration
                 $table->id();
                 $table
                     ->uuid("followed_id")
-                    ->references("users.id")
+                    ->references("id")->on('user_schemas')
                     ->deferrable("deferred")
                     ->index("following_followed_index", "hash");
                 $table
                     ->uuid("follower_id")
-                    ->references("users.id")
+                    ->references("id")->on('user_schemas')
                     ->deferrable("deferred")
                     ->index("following_follower_index", "hash");
             }

@@ -17,16 +17,16 @@ return new class extends Migration
                 $table->id();
 
                 $table
-                    ->integer("post_id")
+                    ->unsignedBigInteger("post_id")
                     ->unsigned()
                     ->nullable()
                     ->index("post_mention_post_id_index", "hash");
-                $table->foreign("post_id")->references("posts->id")->deferrable("deferred");
-                $table
-                    ->uuid("user_id")
-                    ->references("users->id")
-                    ->deferrable("deferred")
-                    ->index("post_mention_user_id_index", "hash");
+                $table->foreign("post_id")->references("id")->on('post_schemas')->deferrable("deferred");
+                // $table
+                //     ->uuid("user_id")
+                //     ->references("users->id")
+                //     ->deferrable("deferred")
+                //     ->index("post_mention_user_id_index", "hash");
                 $table->timestamps(true, true);
             }
         );

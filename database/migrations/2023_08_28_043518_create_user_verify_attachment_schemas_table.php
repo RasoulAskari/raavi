@@ -15,12 +15,12 @@ return new class extends Migration
             'user_verify_attachments_schemas',
             function (Blueprint $table) {
                 $table->id();
-                $table->uuid("user_id")->nullable()->index("user_verify_user_id_index", "hash");
-                $table->foreign("user_id")->references("users.id")->deferrable("deferred");
-                $table->integer("attachment_id")->unsigned()->nullable();
+                $table->uuid("user_id")->nullable();
+                $table->foreign("user_id")->references("id")->on('user_schemas')->deferrable("deferred");
+                $table->unsignedBigInteger("attachment_id")->nullable();
                 $table
                     ->foreign("attachment_id")
-                    ->references("attachments->id")
+                    ->references("id")->on('attachment_schemas')
                     ->deferrable("deferred");
             }
         );

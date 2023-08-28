@@ -17,12 +17,12 @@ return new class extends Migration
                 $table->id();
                 $table
                     ->uuid("user_id")
-                    ->references("users.id")
+                    ->references("id")->on('user_schemas')
                     ->deferrable("deferred")
                     ->index("user_block_user_id_index", "hash");
                 $table
                     ->uuid("blocked_user_id")
-                    ->references("users.id")
+                    ->references("id")->on('user_schemas')
                     ->deferrable("deferred")
                     ->index("user_block_blocked_id_index", "hash");
             }

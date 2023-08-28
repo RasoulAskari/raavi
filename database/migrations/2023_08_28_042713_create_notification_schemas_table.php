@@ -16,13 +16,13 @@ return new class extends Migration
             $table->string("title")->nullable();
             $table->string("body")->nullable();
             $table->json("data")->nullable();
-            $table->bool("seen")->default(false);
+            $table->boolean("seen")->default(false);
             $table->string("message_id")->nullable();
-            $table
-                ->uuid("user_id")
-                ->references("users->id")
-                ->deferrable("deferred")
-                ->index("notifications_user_id_index", "hash");
+            // $table
+            //     ->uuid("user_id")
+            //     ->references("id")->on('user_schemas')
+            //     ->deferrable("deferred")
+            //     ->index("notifications_user_id_index", "hash");
 
 
             $table->timestamps();

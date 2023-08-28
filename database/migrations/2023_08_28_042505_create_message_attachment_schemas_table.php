@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('message_attachment_schemas', function (Blueprint $table) {
             $table->id();
-            $table->increments("id")->index("message_attachment_id_index", "hash");
             $table
                 ->string("url")
                 ->index("message_attachment_url_index", "btree")

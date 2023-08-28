@@ -22,14 +22,14 @@ return new class extends Migration
                 ->default("published");
 
             $table->enum("attachment_type", ["none", "img", "video"])->nullable();
-            $table
-                ->uuid("created_by")
-                ->references("users->id")
-                ->deferrable("deferred")
-                ->nullable()
-                ->onDelete("SET NULL")
-                ->index()
-                ->index("post_created_by_index", "hash");
+            // $table
+            //     ->uuid("created_by")
+            //     ->references("users->id")
+            //     ->deferrable("deferred")
+            //     ->nullable()
+            //     ->onDelete("SET NULL")
+            //     ->index()
+            //     ->index("post_created_by_index", "hash");
 
             $table->timestamps();
         });

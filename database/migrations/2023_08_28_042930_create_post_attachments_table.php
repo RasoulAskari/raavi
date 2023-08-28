@@ -18,24 +18,20 @@ return new class extends Migration
 
                 $table
 
-                    ->integer("post_id")
-                    ->unsigned()
-                    ->nullable()
-                    ->index("post_attachment_post_id_index", "hash");
-                $table->foreign("post_id")->references("posts->id")->deferrable("deferred");
+                    ->unsignedBigInteger("post_id")
+                    ->nullable();
+                $table->foreign("post_id")->references("id")->on('post_schemas')->deferrable("deferred");
 
                 $table
-                    ->integer("attachment_id")
-                    ->unsigned()
-                    ->nullable()
-                    ->index("post_attachment_attachment_id_index", "hash");
+                    ->unsignedBigInteger("attachment_id")
+                    ->nullable();
                 $table
                     ->foreign("attachment_id")
-                    ->references("attachments->id")
+                    ->references("id")->on('attachment_schemas')
                     ->deferrable("deferred");
             }
         );
-        }
+    }
 
     /**
      * Reverse the migrations.

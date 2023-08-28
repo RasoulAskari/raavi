@@ -13,13 +13,11 @@ return new class extends Migration
     {
         Schema::create('message_attachment_parent_schemas', function (Blueprint $table) {
             $table
-                ->integer("parent_id")
-                ->unsigned()
-                ->index("message_attachment_parent_id_index", "hash")
+                ->unsignedBigInteger("parent_id")
                 ->nullable();
             $table
                 ->foreign("parent_id")
-                ->references("message_attachment_schemas.id")
+                ->references("id")->on('message_attachment_schemas')
                 ->deferrable("deferred");
             $table
                 ->integer("thumbnail_id")

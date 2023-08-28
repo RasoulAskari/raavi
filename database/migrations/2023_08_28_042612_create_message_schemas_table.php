@@ -14,18 +14,14 @@ return new class extends Migration
         Schema::create('message_schemas', function (Blueprint $table) {
             $table->id();
             $table->text("message")->index("message_message_index", "btree");
-            $table->timestamps(true, true);
+            // $table
+            //     ->uuid("sender_id")
+            //     ->references("users->id")
+            //     ->deferrable("deferred")
+            //     ->index("message_sender_id_index", "hash");
             $table
-                ->uuid("sender_id")
-                ->references("users->id")
-                ->deferrable("deferred")
-                ->index("message_sender_id_index", "hash");
-            $table
-                ->integer("chat_id")
-                ->unsigned()
-                ->notNullable()
-                ->index("message_chat_id_index", "hash");
-            $table->foreign("chat_id")->references("chat_schemas.id")->deferrable("deferred");
+                ->unsignedBigInteger("chat_id");
+            $table->foreign("chat_id")->references("id")->on('chat_schemas')->deferrable("deferred");
             $table
                 ->enum("attachment_type", ["none", "voice", "image_video"])
                 ->default("none");

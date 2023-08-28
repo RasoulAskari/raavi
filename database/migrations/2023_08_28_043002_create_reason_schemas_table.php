@@ -18,13 +18,13 @@ return new class extends Migration
             $table->string("prev_state");
             $table->string("new_state");
             $table->text("reason");
-            $table
-                ->uuid("changed_by")
-                ->unsigned()
-                ->references("users.id")
-                ->deferrable("deferred")
-                ->nullable()
-                ->onDelete("SET NULL");
+            // $table
+            //     ->uuid("changed_by")
+            //     ->unsigned()
+            //     ->references("users.id")
+            //     ->deferrable("deferred")
+            //     ->nullable()
+            //     ->onDelete("SET NULL");
 
             $table->timestamps();
         });

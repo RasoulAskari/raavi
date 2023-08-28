@@ -9,22 +9,14 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
-    {
-        Schema::create(
-            'user_attachment_schemas',
-            function (Blueprint $table) {
-                $table
-                    ->foreign("profile_picture")
-                    ->references("attachments.id")
-                    ->deferrable("deferred");
-                $table
-                    ->foreign("cover_photo")
-                    ->references("attachments->id")
-                    ->deferrable("deferred");
-            }
-        );
-    }
+    // public function up(): void
+    // {
+    //     Schema::create(
+    //         'user_attachment_schemas',
+    //         function (Blueprint $table) {
+    //         }
+    //     );
+    // }
 
     /**
      * Reverse the migrations.

@@ -17,11 +17,8 @@ return new class extends Migration
                 $table->id();
 
                 $table
-                    ->integer("shared_post")
-                    ->unsigned()
-                    ->nullable()
-                    ->index("post_shared_post_index", "hash");
-                $table->foreign("shared_post")->references("posts->id")->deferrable("deferred");
+                    ->unsignedBigInteger("shared_post");
+                $table->foreign("shared_post")->references("id")->on('post_schemas')->deferrable("deferred");
             }
         );
     }

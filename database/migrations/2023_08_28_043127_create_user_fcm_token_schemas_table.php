@@ -17,7 +17,7 @@ return new class extends Migration
                 $table->id();
                 $table
                     ->uuid("user_id")
-                    ->references("users.id")
+                    ->references("id")->on('user_schemas')
                     ->deferrable("deferred")
                     ->index("user_fcm_token_user_id_index", "hash");
                 $table->text("fcm_token")->nullable();

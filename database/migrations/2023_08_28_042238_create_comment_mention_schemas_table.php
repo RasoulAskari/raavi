@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('comment_mention_schemas', function (Blueprint $table) {
             $table->increments("id");
-            $table->integer("comment_id")->unsigned()->nullable();
-            $table->foreign("comment_id")->references("comment_schemas.id")->deferrable("deferred");
+            $table->unsignedBigInteger("comment_id")->nullable();
+            $table->foreign("comment_id")->references("id")->on('comment_schemas')->deferrable("deferred");
 
-            $table->uuid("user_id")->references("users.id")->deferrable("deferred");
+            $table->uuid("user_id")->references("id")->on('user_schemas')->deferrable("deferred");
             $table->text("content")->nullable();
             $table->timestamps();
         });

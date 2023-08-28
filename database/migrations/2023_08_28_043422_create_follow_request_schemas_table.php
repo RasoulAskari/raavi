@@ -17,12 +17,12 @@ return new class extends Migration
                 $table->id();
                 $table
                     ->uuid("receiver_id")
-                    ->references("users.id")
+                    ->references("id")->on('user_schemas')
                     ->deferrable("deferred")
                     ->index("follow_request_receiver_index", "hash");
                 $table
                     ->uuid("sender_id")
-                    ->references("users.id")
+                    ->references("id")->on('user_schemas')
                     ->deferrable("deferred")
                     ->index("follow_request_sender_index", "hash");
             }

@@ -46,15 +46,16 @@ return new class extends Migration
                 ->nullable()
                 ->index("user_longitude_index", "hash");
 
-            $table->integer("state_id")->nullable()->index("user_state_id_index", "hash");
-            $table->foreign("state_id")->references("states->id")->deferrable("deferred");
+            $table->unsignedBigInteger("state_id")->nullable();
+            $table->foreign("state_id")->references("id")->on('state_schemas')->deferrable("deferred");
             $table->boolean("verified")->default(false);
             $table
                 ->uuid("verified_by")
                 ->references("administrators->id")
                 ->deferrable("deferred")
                 ->index("user_verified_by_index", "hash");
-            $table->timestamp("last_online");
+            $table->timestamp("last_online")->nullable();
+
             $table->timestamps();
         });
     }

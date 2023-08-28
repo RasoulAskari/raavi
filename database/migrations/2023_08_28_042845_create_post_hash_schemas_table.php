@@ -17,17 +17,12 @@ return new class extends Migration
                 $table->id();
 
                 $table
-                    ->integer("post_id")
-                    ->unsigned()
-                    ->nullable()
-                    ->index("post_hashtag_post_id_index", "hash");
-                $table->foreign("post_id")->references("posts->id")->deferrable("deferred");
+                    ->unsignedBigInteger("post_id");
+                $table->foreign("post_id")->references("id")->on('post_schemas')->deferrable("deferred");
                 $table
-                    ->integer("hash_tag_id")
-                    ->unsigned()
-                    ->nullable()
-                    ->index("post_hashtag_hashtag_id_index", "hash");
-                $table->foreign("hash_tag_id")->references("posts->id")->deferrable("deferred");
+                    ->unsignedBigInteger("hash_tag_id")
+                    ->nullable();
+                $table->foreign("hash_tag_id")->references("id")->on('post_schemas')->deferrable("deferred");
                 $table->timestamps(true, true);
             }
         );

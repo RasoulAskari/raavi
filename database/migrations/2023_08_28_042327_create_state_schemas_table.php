@@ -22,10 +22,8 @@ return new class extends Migration
                 $table->string("longitude");
                 $table->string("type")->nullable();
                 $table
-                    ->integer("country_id")
-                    ->unsigned()
-                    ->index("state_country_id_index", "hash");
-                $table->foreign("country_id")->references("countrie_schemas.id")->deferrable("deferred");
+                    ->unsignedBigInteger("country_id");
+                $table->foreign("country_id")->references("id")->on('countries_schemas')->deferrable("deferred");
             }
         );
     }

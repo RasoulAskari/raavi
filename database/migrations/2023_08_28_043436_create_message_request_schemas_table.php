@@ -17,12 +17,12 @@ return new class extends Migration
                 $table->id();
                 $table
                     ->uuid("receiver_id")
-                    ->references("users.id")
+                    ->references("id")->on('user_schemas')
                     ->deferrable("deferred")
                     ->index("message_request_receiver_id_index", "hash");
                 $table
                     ->uuid("sender_id")
-                    ->references("users.id")
+                    ->references("id")->on('user_schemas')
                     ->deferrable("deferred")
                     ->index("message_request_sender_id_index", "hash");
                 $table->integer("chat_id")->references("chats->id")->deferrable("deferred");
