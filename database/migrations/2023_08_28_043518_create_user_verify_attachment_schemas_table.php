@@ -11,10 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_verify_attachment_schemas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::create(
+            'user_verify_attachments_schemas',
+            function (Blueprint $table) {
+                $table->id();
+                $table->uuid("user_id")->nullable()->index("user_verify_user_id_index", "hash");
+                $table->foreign("user_id")->references("users.id")->deferrable("deferred");
+                $table->integer("attachment_id")->unsigned()->nullable();
+                $table
+                    ->foreign("attachment_id")
+                    ->references("attachments->id")
+                    ->deferrable("deferred");
+            }
+        );
     }
 
     /**
