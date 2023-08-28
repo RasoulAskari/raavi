@@ -11,10 +11,26 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('post_hash_schemas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::create(
+            'post_hashtag_schema',
+            function (Blueprint $table) {
+                $table->id();
+
+                $table
+                    ->integer("post_id")
+                    ->unsigned()
+                    ->nullable()
+                    ->index("post_hashtag_post_id_index", "hash");
+                $table->foreign("post_id")->references("posts->id")->deferrable("deferred");
+                $table
+                    ->integer("hash_tag_id")
+                    ->unsigned()
+                    ->nullable()
+                    ->index("post_hashtag_hashtag_id_index", "hash");
+                $table->foreign("hash_tag_id")->references("posts->id")->deferrable("deferred");
+                $table->timestamps(true, true);
+            }
+        );
     }
 
     /**
