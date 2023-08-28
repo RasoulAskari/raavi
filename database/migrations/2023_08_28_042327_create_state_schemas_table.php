@@ -11,10 +11,23 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('state_schemas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::create(
+            'state_schema',
+            function (Blueprint $table) {
+                $table->id();
+
+                $table->string("name");
+                $table->string("state_code");
+                $table->string("latitude");
+                $table->string("longitude");
+                $table->string("type")->nullable();
+                $table
+                    ->integer("country_id")
+                    ->unsigned()
+                    ->index("state_country_id_index", "hash");
+                $table->foreign("country_id")->references("countries.id")->deferrable("deferred");
+            }
+        );
     }
 
     /**
