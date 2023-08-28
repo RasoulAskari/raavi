@@ -11,11 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('message_reply_schemas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+
+        Schema::create(
+            'message_schemas_reply',
+            function (Blueprint $table) {
+                $table->id();
+                $table->integer("message_id")->unsigned()->notNullable();
+                $table->foreign("message_id")->references("messages->id")->deferrable("deferred");
+                $table->integer("attachment_id")->unsigned()->notNullable();
+                $table
+                    ->foreign("attachment_id")
+                    ->references("message_attachments->id")
+                    ->deferrable("deferred");
+            }
+        );    }
 
     /**
      * Reverse the migrations.
