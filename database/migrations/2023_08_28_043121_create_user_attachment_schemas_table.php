@@ -24,7 +24,7 @@ return new class extends Migration
                     ->deferrable("deferred");
             }
         );
-          }
+    }
 
     /**
      * Reverse the migrations.

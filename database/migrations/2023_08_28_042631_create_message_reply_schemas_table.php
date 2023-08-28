@@ -13,7 +13,7 @@ return new class extends Migration
     {
 
         Schema::create(
-            'message_schemas_reply',
+            'message_reply_schemas',
             function (Blueprint $table) {
                 $table->id();
                 $table->integer("message_id")->unsigned()->notNullable();
@@ -24,7 +24,8 @@ return new class extends Migration
                     ->references("message_attachments->id")
                     ->deferrable("deferred");
             }
-        );    }
+        );
+    }
 
     /**
      * Reverse the migrations.

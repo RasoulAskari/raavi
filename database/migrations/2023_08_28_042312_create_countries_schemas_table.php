@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('countries_states_cities', function (Blueprint $table) {
+        Schema::create('countries_schemas', function (Blueprint $table) {
             $table->id();
             $table->string("name");
             $table->string("iso3")->index("country_iso2_index", "hash");

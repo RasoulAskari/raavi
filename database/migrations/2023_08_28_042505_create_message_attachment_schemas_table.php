@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('message_attachments', function (Blueprint $table) {
+        Schema::create('message_attachment_schemas', function (Blueprint $table) {
             $table->id();
             $table->increments("id")->index("message_attachment_id_index", "hash");
             $table

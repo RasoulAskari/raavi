@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create(
-            'post_hashtag_schema',
+            'post_hash_schemas',
             function (Blueprint $table) {
                 $table->id();
 

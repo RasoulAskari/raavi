@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reports', function (Blueprint $table) {
+        Schema::create('report_schemas', function (Blueprint $table) {
             $table->id();
             $table->string("reportable_id")->index("report_repotable_id_index", "hash");
             $table->string("reportable_type")->index("report_reportable_index", "hash");

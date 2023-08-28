@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create(
-            'shared_post_schema',
+            'shared_post_schemas',
             function (Blueprint $table) {
                 $table->id();
 

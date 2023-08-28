@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('chats', function (Blueprint $table) {
+        Schema::create('chat_schemas', function (Blueprint $table) {
             $table->id();
             $table->string("name");
             $table->boolean("is_accepted")->defaultTo(true);

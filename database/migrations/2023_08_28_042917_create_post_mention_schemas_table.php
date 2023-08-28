@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create(
-            'post_mention_schema',
+            'post_mention_schemas',
             function (Blueprint $table) {
                 $table->id();
 
@@ -30,7 +30,7 @@ return new class extends Migration
                 $table->timestamps(true, true);
             }
         );
-  }
+    }
 
     /**
      * Reverse the migrations.

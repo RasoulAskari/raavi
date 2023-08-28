@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('ads', function (Blueprint $table) {
+        Schema::create('ad_schemas', function (Blueprint $table) {
             $table->id();
             $table->string("post_link");
             $table->integer("audience_count");

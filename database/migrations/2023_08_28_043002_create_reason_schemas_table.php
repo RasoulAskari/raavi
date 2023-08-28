@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('reasons', function (Blueprint $table) {
+        Schema::create('reason_schemas', function (Blueprint $table) {
             $table->id();
             $table->integer("reasonable_id");
             $table->string("reasonable_type");

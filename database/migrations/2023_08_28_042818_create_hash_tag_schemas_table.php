@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create(
 
-            'hashtag_schema',
+            'hash_tag_schemas',
             function (Blueprint $table) {
                 $table->id();
 

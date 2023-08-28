@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('post_schemas', function (Blueprint $table) {
             $table->id();
             $table->text("content")->index("post_content_index", "btree")->nullable();
             $table->enum("privacy", ["public", "followers", "only_me"])->nullable();

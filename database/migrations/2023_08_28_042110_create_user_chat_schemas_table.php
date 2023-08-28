@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('user_chat_schema', function (Blueprint $table) {
+        Schema::create('user_chat_schemas', function (Blueprint $table) {
             $table->id();
             $table
                 ->integer("chat_id")
