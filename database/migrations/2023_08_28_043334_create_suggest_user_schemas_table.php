@@ -11,10 +11,22 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('suggest_user_schemas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::create(
+            'suggest_user_schemas',
+            function (Blueprint $table) {
+                $table->id();
+                $table
+                    ->uuid("user_id")
+                    ->references("users.id")
+                    ->deferrable("deferred")
+                    ->index("suggest_user_id_index", "hash");
+                $table
+                    ->uuid("created_by")
+                    ->references("administrators->id")
+                    ->deferrable("deferred")
+                    ->index("suggest_created_by_index", "hash");
+            }
+        );
     }
 
     /**
