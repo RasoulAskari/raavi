@@ -11,10 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('shared_post_schemas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::create(
+            'shared_post_schema',
+            function (Blueprint $table) {
+                $table->id();
+
+                $table
+                    ->integer("shared_post")
+                    ->unsigned()
+                    ->nullable()
+                    ->index("post_shared_post_index", "hash");
+                $table->foreign("shared_post")->references("posts->id")->deferrable("deferred");
+            }
+        );
     }
 
     /**
