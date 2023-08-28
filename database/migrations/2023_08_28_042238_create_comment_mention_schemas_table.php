@@ -11,8 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comment_mention_schemas', function (Blueprint $table) {
-            $table->id();
+        Schema::create('comment_mention_schema', function (Blueprint $table) {
+            $table->increments("id");
+            $table->integer("comment_id")->unsigned()->nullable();
+            $table->foreign("comment_id")->references("comments.id")->deferrable("deferred");
+
+            $table->uuid("user_id")->references("users.id")->deferrable("deferred");
+            $table->text("content")->nullable();
             $table->timestamps();
         });
     }
