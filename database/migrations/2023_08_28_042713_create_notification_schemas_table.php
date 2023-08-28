@@ -11,8 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('notification_schemas', function (Blueprint $table) {
+        Schema::create('notifications', function (Blueprint $table) {
             $table->id();
+            $table->string("title")->nullable();
+            $table->string("body")->nullable();
+            $table->json("data")->nullable();
+            $table->bool("seen")->default(false);
+            $table->string("message_id")->nullable();
+            $table
+                ->uuid("user_id")
+                ->references("users->id")
+                ->deferrable("deferred")
+                ->index("notifications_user_id_index", "hash");
+
+
             $table->timestamps();
         });
     }
