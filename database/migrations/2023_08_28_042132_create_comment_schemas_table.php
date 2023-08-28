@@ -11,8 +11,27 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comment_schemas', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
+            $table
+                ->integer("post_id")
+                ->index("comment_post_id_index", "hash")
+                ->unsigned()
+                ->nullable();
+            $table
+                ->foreign("post_id")
+                ->references("posts.id")
+                ->deferrable("deferred")
+                ->onDelete("SET NULL");
+            $table
+                ->uuid("user_id")
+                ->index("comment_user_id_index", "hash")
+                ->references("users.id")
+                ->deferrable("deferred")
+                ->nullable()
+                ->onDelete("SET NULL");
+            $table->text("content")->index("comment_content_index", "btree");
+
             $table->timestamps();
         });
     }
