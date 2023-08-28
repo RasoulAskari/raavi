@@ -11,11 +11,31 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('post_attachments', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+        Schema::create(
+            'post_attchment',
+            function (Blueprint $table) {
+                $table->id();
+
+                $table
+
+                    ->integer("post_id")
+                    ->unsigned()
+                    ->nullable()
+                    ->index("post_attachment_post_id_index", "hash");
+                $table->foreign("post_id")->references("posts->id")->deferrable("deferred");
+
+                $table
+                    ->integer("attachment_id")
+                    ->unsigned()
+                    ->nullable()
+                    ->index("post_attachment_attachment_id_index", "hash");
+                $table
+                    ->foreign("attachment_id")
+                    ->references("attachments->id")
+                    ->deferrable("deferred");
+            }
+        );
+        }
 
     /**
      * Reverse the migrations.
