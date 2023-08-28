@@ -11,10 +11,26 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('post_reaction_schemas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::create(
+            'post_reaction_schema',
+            function (Blueprint $table) {
+                $table->id();
+
+                $table
+                    ->integer("post_id")
+                    ->unsigned()
+                    ->nullable()
+                    ->index("post_reaction_post_id_index", "hash");
+                $table->foreign("post_id")->references("posts->id")->deferrable("deferred");
+
+                $table
+                    ->uuid("user_id")
+                    ->references("users->id")
+                    ->deferrable("deferred")
+                    ->index("post_reaction_user_id_index", "hash");
+                $table->timestamps(true, true);
+            }
+        );
     }
 
     /**
