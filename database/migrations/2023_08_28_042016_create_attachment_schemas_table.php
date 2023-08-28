@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('attachment_schema', function (Blueprint $table) {
+        Schema::create('attachment_schemas', function (Blueprint $table) {
             $table->id();
             $table->string("url")->index("attachment_url_index", "btree")->notNullable();
             $table->integer("height")->index("attachment_height_index", "hash")->nullable();

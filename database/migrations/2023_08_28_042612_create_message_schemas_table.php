@@ -25,7 +25,7 @@ return new class extends Migration
                 ->unsigned()
                 ->notNullable()
                 ->index("message_chat_id_index", "hash");
-            $table->foreign("chat_id")->references("chats->id")->deferrable("deferred");
+            $table->foreign("chat_id")->references("chat_schemas.id")->deferrable("deferred");
             $table
                 ->enum("attachment_type", ["none", "voice", "image_video"])
                 ->default("none");

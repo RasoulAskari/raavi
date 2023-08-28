@@ -13,21 +13,21 @@ return new class extends Migration
     {
         Schema::create('attachment_parent_schemas', function (Blueprint $table) {
             $table
-                ->integer("parent_id")
-                ->unsigned()
-                ->index("attachment_parent_id_index", "hash")
+                ->unsignedBigInteger("parent_id")
+
                 ->nullable();
             $table
                 ->foreign("parent_id")
-                ->references("id")->on('attachments');
+                ->references("id")->on('attachment_schemas');
 
-            $table
-                ->integer("thumbnail_id")
-                ->index("attachment_thumbnail_id_index", "hash")
-                ->nullable();
-            $table
-                ->foreign("thumbnail_id")
-                ->references("id")->on('attachments');
+
+            // $table
+            //     ->integer("thumbnail_id")
+            //     ->index("attachment_thumbnail_id_index", "hash")
+            //     ->nullable();
+            // $table
+            //     ->foreign("thumbnail_id")
+            //     ->references("id")->on('attachments');
         });
     }
 

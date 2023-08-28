@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string("name");
             $table->boolean("is_accepted")->defaultTo(true);
-            $table->timestamps(true, true);
             $table->timestamp("last_messaged_at");
             $table->json("recipients")->nullable();
 

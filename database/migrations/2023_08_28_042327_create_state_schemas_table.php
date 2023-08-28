@@ -25,7 +25,7 @@ return new class extends Migration
                     ->integer("country_id")
                     ->unsigned()
                     ->index("state_country_id_index", "hash");
-                $table->foreign("country_id")->references("countries.id")->deferrable("deferred");
+                $table->foreign("country_id")->references("countrie_schemas.id")->deferrable("deferred");
             }
         );
     }

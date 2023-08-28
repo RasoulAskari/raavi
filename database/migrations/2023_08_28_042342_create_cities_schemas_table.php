@@ -20,7 +20,7 @@ return new class extends Migration
                 $table->string("latitude");
                 $table->string("longitude");
                 $table->integer("state_id")->unsigned()->index("city_state_id_index", "hash");
-                $table->foreign("state_id")->references("states.id")->deferrable("deferred");
+                $table->foreign("state_id")->references("state_schemas.id")->deferrable("deferred");
             }
         );
     }

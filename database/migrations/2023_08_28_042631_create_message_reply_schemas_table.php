@@ -21,7 +21,7 @@ return new class extends Migration
                 $table->integer("attachment_id")->unsigned()->notNullable();
                 $table
                     ->foreign("attachment_id")
-                    ->references("message_attachments->id")
+                    ->references("message_attachment_schemas->id")
                     ->deferrable("deferred");
             }
         );

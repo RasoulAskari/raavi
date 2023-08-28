@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('comment_reply_schemas', function (Blueprint $table) {
             $table->integer("comment_id")->unsigned()->nullable();
-            $table->foreign("comment_id")->references("comments.id")->deferrable("deferred");
+            $table->foreign("comment_id")->references("id")->on('comment_schemas')->deferrable("deferred");
         });
-  }
+    }
 
     /**
      * Reverse the migrations.

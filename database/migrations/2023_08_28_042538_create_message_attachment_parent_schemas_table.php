@@ -19,17 +19,17 @@ return new class extends Migration
                 ->nullable();
             $table
                 ->foreign("parent_id")
-                ->references("message_attachments.id")
+                ->references("message_attachment_schemas.id")
                 ->deferrable("deferred");
             $table
                 ->integer("thumbnail_id")
                 ->unsigned()
                 ->index("message_attachment_thumbnail_id_index", "hash")
                 ->nullable();
-            $table
-                ->foreign("thumbnail_id")
-                ->references("message_attachments.id")
-                ->deferrable("deferred");
+            // $table
+            //     ->foreign("thumbnail_id")
+            //     ->references("message_attachments.id")
+            //     ->deferrable("deferred");
 
             $table->timestamps();
         });
