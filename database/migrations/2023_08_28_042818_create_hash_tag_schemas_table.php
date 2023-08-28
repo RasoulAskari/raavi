@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('hash_tag_schemas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::create(
+
+            'hashtag_schema',
+            function (Blueprint $table) {
+                $table->id();
+
+                $table->string("title")->index("hashtag_title_index", "hash");
+                $table->timestamps(true, true);
+            }
+        );
     }
 
     /**
