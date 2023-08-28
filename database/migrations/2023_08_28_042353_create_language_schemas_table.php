@@ -11,10 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('language_schemas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
+        Schema::create(
+            'languages_schema',
+            function (Blueprint $table) {
+                $table->id();
+
+                $table->string("code")->index("language_code_index", "hash");
+                $table->string("name");
+                $table->string("native");
+            }
+        );
     }
 
     /**
