@@ -11,11 +11,19 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('search_history_schemas', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+        Schema::create(
+            'search_history_schemas',
+            function (Blueprint $table) {
+                $table->id();
+                $table
+                    ->uuid("user_id")
+                    ->references("users.id")
+                    ->deferrable("deferred")
+                    ->index("user_search_history_user_id_index", "hash");
+                $table->string("search_text")->index("user_search_text_index", "btree");
+            }
+        );
+          }
 
     /**
      * Reverse the migrations.
