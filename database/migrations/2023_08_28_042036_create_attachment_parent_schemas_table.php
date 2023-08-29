@@ -21,13 +21,13 @@ return new class extends Migration
                 ->references("id")->on('attachment_schemas');
 
 
-            // $table
-            //     ->integer("thumbnail_id")
-            //     ->index("attachment_thumbnail_id_index", "hash")
-            //     ->nullable();
-            // $table
-            //     ->foreign("thumbnail_id")
-            //     ->references("id")->on('attachments');
+            $table
+                ->integer("thumbnail_id")
+                ->index("attachment_thumbnail_id_index", "hash")
+                ->nullable();
+            $table
+                ->foreign("thumbnail_id")
+                ->references("id")->on('attachment_schemas');
         });
     }
 
