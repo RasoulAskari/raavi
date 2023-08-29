@@ -16,11 +16,11 @@ return new class extends Migration
             $table
                 ->unsignedBigInteger("chat_id")->notNullable();
             $table->foreign("chat_id")->references("id")->on("chat_schemas")->deferrable("deferred");
-            // $table
-            //     ->uuid("user_id")
-            //     ->references("user_schemas.id")
-            //     ->deferrable("deferred")
-            //     ->index("user_chat_user_id_index", "hash");
+            $table
+                ->uuid("user_id")
+                ->references("id")->on('user_schemas')
+                ->deferrable("deferred")
+                ->index("user_chat_user_id_index", "hash");
         });
     }
 
