@@ -24,10 +24,10 @@ return new class extends Migration
                 ->unsigned()
                 ->index("message_attachment_thumbnail_id_index", "hash")
                 ->nullable();
-            // $table
-            //     ->foreign("thumbnail_id")
-            //     ->references("message_attachments.id")
-            //     ->deferrable("deferred");
+            $table
+                ->foreign("thumbnail_id")
+                ->references("id")->on('attachment_schemas')
+                ->deferrable("deferred");
 
             $table->timestamps();
         });

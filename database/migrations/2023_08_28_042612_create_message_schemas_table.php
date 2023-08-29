@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('message_schemas', function (Blueprint $table) {
             $table->id();
             $table->text("message")->index("message_message_index", "btree");
-            // $table
-            //     ->uuid("sender_id")
-            //     ->references("users->id")
-            //     ->deferrable("deferred")
-            //     ->index("message_sender_id_index", "hash");
+            $table
+                ->uuid("sender_id")
+                ->references("id")->on('user_schemas')
+                ->deferrable("deferred")
+                ->index("message_sender_id_index", "hash");
             $table
                 ->unsignedBigInteger("chat_id");
             $table->foreign("chat_id")->references("id")->on('chat_schemas')->deferrable("deferred");
