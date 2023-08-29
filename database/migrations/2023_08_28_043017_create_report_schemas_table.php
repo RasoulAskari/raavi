@@ -20,13 +20,13 @@ return new class extends Migration
                 ->default("pending")
                 ->index("report_status_id_index", "hash");
             $table->text("report");
-            // $table
-            //     ->uuid("reported_by")
-            //     ->references("users.id")
-            //     ->deferrable("deferred")
-            //     ->nullable()
-            //     ->onDelete("SET NULL")
-            //     ->index("report_reported_by_index", "hash");
+            $table
+                ->uuid("reported_by")
+                ->references("id")->on('user_schemas')
+                ->deferrable("deferred")
+                ->nullable()
+                ->onDelete("SET NULL")
+                ->index("report_reported_by_index", "hash");
 
             $table->timestamps();
         });
