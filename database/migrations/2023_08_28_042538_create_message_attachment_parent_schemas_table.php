@@ -20,9 +20,7 @@ return new class extends Migration
                 ->references("id")->on('message_attachment_schemas')
                 ->deferrable("deferred");
             $table
-                ->integer("thumbnail_id")
-                ->unsigned()
-                ->index("message_attachment_thumbnail_id_index", "hash")
+                ->unsignedBigInteger("thumbnail_id")
                 ->nullable();
             $table
                 ->foreign("thumbnail_id")
