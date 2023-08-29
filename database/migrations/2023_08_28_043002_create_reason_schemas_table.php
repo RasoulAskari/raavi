@@ -20,7 +20,6 @@ return new class extends Migration
             $table->text("reason");
             $table
                 ->uuid("changed_by")
-                ->unsigned()
                 ->references("id")->on('user_schemas')
                 ->deferrable("deferred")
                 ->nullable()
