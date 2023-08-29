@@ -22,17 +22,15 @@ return new class extends Migration
                 ->index("ads_status_index", "hash")
                 ->nullable();
             $table
-                ->integer("post_id")
+                ->unsignedBigInteger("post_id")
                 ->nullable();
             $table->foreign("post_id")->references("id")->on('post_schemas')->deferrable("deferred");
             $table
                 ->uuid("created_by")
                 ->references("id")->on('administrator_schemas')
                 ->deferrable("deferred")
-                ->unsigned()
                 ->nullable()
-                ->onDelete("SET NULL")
-                ->index("ads_created_by_index", "hash");
+                ->onDelete("SET NULL");
 
             $table->string("expire_job_id");
 

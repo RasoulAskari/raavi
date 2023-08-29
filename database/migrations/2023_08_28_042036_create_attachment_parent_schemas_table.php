@@ -22,8 +22,7 @@ return new class extends Migration
 
 
             $table
-                ->integer("thumbnail_id")
-                ->index("attachment_thumbnail_id_index", "hash")
+                ->unsignedBigInteger("thumbnail_id")
                 ->nullable();
             $table
                 ->foreign("thumbnail_id")

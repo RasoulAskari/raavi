@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('administrators', function (Blueprint $table) {
+        Schema::create('administrator_schemas', function (Blueprint $table) {
             $table->uuid('id')->unique()->primary();
             $table->string("full_name");
             $table->string("email")->unique();

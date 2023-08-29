@@ -14,9 +14,7 @@ return new class extends Migration
         Schema::create('comment_schemas', function (Blueprint $table) {
             $table->id();
             $table
-                ->integer("post_id")
-                ->index("comment_post_id_index", "hash")
-                ->unsigned()
+                ->unsignedBigInteger("post_id")
                 ->nullable();
             $table
                 ->foreign("post_id")
