@@ -24,15 +24,15 @@ return new class extends Migration
             $table
                 ->integer("post_id")
                 ->nullable();
-            // $table->foreign("post_id")->references("posts.id")->deferrable("deferred");
-            // $table
-            //     ->uuid("created_by")
-            //     ->references("administrators.id")
-            //     ->deferrable("deferred")
-            //     ->unsigned()
-            //     ->nullable()
-            //     ->onDelete("SET NULL")
-            //     ->index("ads_created_by_index", "hash");
+            $table->foreign("post_id")->references("id")->on('post_schemas')->deferrable("deferred");
+            $table
+                ->uuid("created_by")
+                ->references("id")->on('administrator_schemas')
+                ->deferrable("deferred")
+                ->unsigned()
+                ->nullable()
+                ->onDelete("SET NULL")
+                ->index("ads_created_by_index", "hash");
 
             $table->string("expire_job_id");
 
