@@ -32,8 +32,12 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return ['user' => "do you know you are?"];
+Route::post("login", [AuthController::class, "login"]);
+
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+
+    Route::get("admin", [AuthController::class, "login"]);
 });
 
 Route::post('login', [AuthController::class, 'login']);
