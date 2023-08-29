@@ -23,11 +23,11 @@ return new class extends Migration
                     ->index("post_reaction_post_id_index", "hash");
                 $table->foreign("post_id")->references("id")->on('post_schemas')->deferrable("deferred");
 
-                // $table
-                //     ->uuid("user_id")
-                //     ->references("id")->on('user_schemas')
-                //     ->deferrable("deferred")
-                //     ->index("post_reaction_user_id_index", "hash");
+                $table
+                    ->uuid("user_id")
+                    ->references("id")->on('user_schemas')
+                    ->deferrable("deferred")
+                    ->index("post_reaction_user_id_index", "hash");
                 $table->timestamps(true, true);
             }
         );

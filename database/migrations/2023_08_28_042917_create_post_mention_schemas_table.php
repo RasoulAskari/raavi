@@ -24,7 +24,7 @@ return new class extends Migration
                 $table->foreign("post_id")->references("id")->on('post_schemas')->deferrable("deferred");
                 // $table
                 //     ->uuid("user_id")
-                //     ->references("users->id")
+                //     ->references("id")->on('user_schemas')
                 //     ->deferrable("deferred")
                 //     ->index("post_mention_user_id_index", "hash");
                 $table->timestamps(true, true);
