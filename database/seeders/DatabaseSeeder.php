@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
+use App\Models\AdministratorSchema;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -14,13 +14,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create(
+        AdministratorSchema::create(
             [
-                'name' => 'admin',
+                
+                'full_name' => 'admin',
+
                 'email' => 'admin@admin.com',
-                'email_verified_at' => now(),
                 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-                'remember_token' => '12',
+                "phone_no" => "00923413010354",
+                "gender" => "male",
+
             ]
         );
     }

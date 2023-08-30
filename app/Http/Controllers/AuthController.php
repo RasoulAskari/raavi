@@ -17,6 +17,6 @@ class AuthController extends Controller
 
             return response()->json(['result' => true, "user" => Auth::user(), "token" => $token], 200);
         }
-        return response()->json(["result" => false, "error" => "پسورد یا ایمل نادرست میباشد!"], 401);
+        return response()->json(["result" => false, "error" => "rasoul 123"], 401);
     }
 }

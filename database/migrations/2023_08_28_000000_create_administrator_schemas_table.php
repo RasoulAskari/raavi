@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('administrator_schemas', function (Blueprint $table) {
-            $table->uuid('id')->unique()->primary();
+            $table->id();
             $table->string("full_name");
             $table->string("email")->unique();
             $table->string("phone_no")->unique();
@@ -21,6 +21,7 @@ return new class extends Migration
             $table->enum("gender", ["male", "female"]);
             $table->integer("profile_picture")->unsigned()->nullable();
             $table->rememberToken();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
