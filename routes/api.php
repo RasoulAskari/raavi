@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Models\AdministratorSchema;
 
 // php artisan make:model Administrator -cm
 // php artisan make:model Ads -cm
@@ -32,10 +33,12 @@ use App\Http\Controllers\AuthController;
 |
 */
 
-Route::post("login", [AuthController::class, "login"]);
+Route::prefix('auth')->group(function () {
+    Route::post('employee/login', [AuthController::class, 'login']);
+    // Define other authentication routes if needed.
+});
 
-
-Route::group(['middleware' => 'auth:sanctum'], function () {
+Route::group(['middleware' => 'auth:administrator_schemas'], function () {
 
     Route::get("admin", [AuthController::class, "login"]);
 });

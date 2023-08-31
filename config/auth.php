@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'administrator_schemas',
+        'passwords' => 'users',
     ],
 
     /*
@@ -39,6 +39,16 @@ return [
         'web' => [
             'driver' => 'session',
             'provider' => 'administrator_schemas',
+        ],
+
+        'api' => [
+            'driver' => 'sanctum',
+            'provider' => 'administrator_schemas', // Use the customers provider
+            'hash' => false,
+        ],
+        'administrator_schemas' => [  // Make sure this guard is defined
+            'driver' => 'sanctum',    // or 'token' based on your needs
+            'provider' => 'administrators', // Change to your administrator provider
         ],
     ],
 
@@ -91,8 +101,8 @@ return [
     */
 
     'passwords' => [
-        'administrator_schemas' => [
-            'provider' => 'administrator_schemas',
+        'users' => [
+            'provider' => 'users',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

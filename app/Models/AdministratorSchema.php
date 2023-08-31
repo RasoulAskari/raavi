@@ -24,10 +24,9 @@ class AdministratorSchema extends Model
     ];
 
 
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    // protected $hidden = [
+    //     'password',
+    //     'remember_token',
+    // ];
 
-    use HasFactory;
 }
