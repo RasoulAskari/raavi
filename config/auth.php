@@ -70,6 +70,10 @@ return [
     */
 
     'providers' => [
+        'user' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ],
         'administrator_schemas' => [
             'driver' => 'eloquent',
             'model' => App\Models\AdministratorSchema::class,
