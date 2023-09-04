@@ -33,7 +33,6 @@ return new class extends Migration
             $table->string("emoji");
             $table->string("emojiU");
             $table->string("nationality");
-
             $table->timestamps();
         });
     }
